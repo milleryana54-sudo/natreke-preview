@@ -1,0 +1,78 @@
+/* NATREKE V6 — focused mobile-first corrections; preserves existing desktop art direction. */
+html, body {max-width:100%;}
+.wordmark-star,.manifesto-symbol,.visual-stamp span{font-family:'Onest','Manrope',Arial,sans-serif!important;font-variant-emoji:text!important;}
+/* Earth: local NASA Blue Marble satellite texture, interactive native WebGL. */
+.globe-block{isolation:isolate;}
+.globe-block::after{content:"";position:absolute;top:8%;left:12%;right:12%;bottom:17%;border-radius:50%;box-shadow:0 0 70px 10px #5f97a526,inset 0 0 40px #cee7f90f;pointer-events:none;z-index:0;}
+.globe-canvas{z-index:2;position:relative;touch-action:pan-y;}
+.globe-fallback{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(85%,500px);height:auto;aspect-ratio:1/1;object-fit:contain;z-index:1;pointer-events:none;filter:drop-shadow(0 0 22px #6ba8ba3b);}
+.globe-block.is-3d-ready .globe-fallback{opacity:0;visibility:hidden;}
+.globe-markers{position:absolute;inset:0;pointer-events:none;z-index:4;}
+.globe-marker{position:absolute;width:16px;height:16px;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;pointer-events:auto;transition:opacity .25s;isolation:isolate;}
+.globe-marker-dot{display:block;width:10px;height:10px;border:2px solid #fff4e6;border-radius:50%;background:#c46b49;box-shadow:0 0 0 5px #d1805354,0 0 19px #f5ad78bc;flex:none;}
+.globe-marker-label{position:absolute;left:15px;top:50%;transform:translateY(-50%) translateX(-3px);opacity:0;visibility:hidden;transition:opacity .2s,transform .2s;border:1px solid #fff6;background:#0b1719de;backdrop-filter:blur(8px);color:white;padding:7px 10px;border-radius:6px;font:700 11px 'Manrope',Arial,sans-serif;white-space:nowrap;box-shadow:0 10px 30px #0008;pointer-events:none;}
+.globe-marker:hover .globe-marker-label,.globe-marker:focus-visible .globe-marker-label{visibility:visible;opacity:1;transform:translateY(-50%);}
+.globe-marker:focus-visible{outline:2px solid #fff;outline-offset:5px;}
+.globe-caption{z-index:5;bottom:5%;right:6%;}
+.globe-credit{position:absolute;bottom:5.5%;left:3%;font:600 8px 'Manrope',Arial,sans-serif;letter-spacing:.10em;color:#b0c8cbac;z-index:4;pointer-events:none;}
+/* Each trip uses the same factual indicators. */
+.route-bottom>div{min-width:0;flex:1;}
+.route-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:21px;max-width:470px;border-top:1px solid #ffffff65;}
+.route-fact{min-width:0;padding:11px 8px 11px 0;border-bottom:1px solid #ffffff46;display:flex;flex-direction:column;gap:4px;}
+.route-bottom .route-fact span{color:#d7dcda;font:600 9px/1.2 'Manrope',Arial,sans-serif;letter-spacing:.035em;}
+.route-bottom .route-fact strong{color:#fff;font:750 13px/1.35 'Manrope',Arial,sans-serif;letter-spacing:-.025em;overflow-wrap:normal;}
+.route-bottom h3{margin-bottom:12px;}
+.route-overlay{background:linear-gradient(0deg,#041012fa 0%,#061014df 32%,#07111254 73%,#0514192a 100%);}
+.route-card-kg{height:780px;}.route-card-np{height:720px;}.route-card-bali{height:720px;}
+.outro-contacts{display:flex;align-items:center;gap:25px;flex-wrap:wrap;}
+.outro-contacts a:last-child{color:#f9b99a;border-bottom:1px solid #c46b49;padding-bottom:5px;}
+.button-max{background:#a9583b;color:#fff;padding:17px 24px;border-radius:100px;font:750 13px/1.2 var(--body);transition:background .3s;white-space:nowrap;}
+.button-max:hover{background:#d17853;}
+.button-max span{padding-left:12px;}
+.footer-contacts{display:flex;flex-direction:column;align-items:flex-start;gap:24px;}
+.footer-max{font:700 13px/1.5 var(--body);border-bottom:1px solid #c46b49;padding-bottom:8px;color:#f0b29a;}
+/* Make real mobile chapters, not a desktop pinned scroll trap. */
+@media(max-width:800px){
+ .story-sequence{height:auto!important;min-height:0!important;overflow:visible!important;}
+ .story-sticky{height:auto!important;position:relative!important;top:auto!important;min-height:0;overflow:visible!important;isolation:auto;}
+ .story-layer,.story-darken,.story-chrome,.story-progress{display:none!important;}
+ .story-text-wrap{position:relative!important;inset:auto!important;display:flex!important;flex-direction:column;align-items:stretch;padding:0!important;}
+ .story-copy{position:relative!important;max-width:none!important;min-height:max(650px,92svh);width:100%;display:flex!important;flex-direction:column;justify-content:center;padding:130px max(24px,6vw) 95px;opacity:1!important;transform:none!important;pointer-events:auto;overflow:hidden;isolation:isolate;}
+ .story-copy:before{content:"";position:absolute;z-index:-3;inset:0;display:block;background-size:cover;background-position:center;transform:scale(1.10);transition:transform 2.3s cubic-bezier(.2,.75,.2,1);}
+ .story-copy:after{content:"";position:absolute;z-index:-2;inset:0;background:linear-gradient(90deg,#041013ed 1%,#0515188a 68%,#04151750 100%),linear-gradient(0deg,#041113b8 0%,transparent 50%);}
+ .story-copy[data-story-copy="0"]:before{background-image:url('images/nepal-peak.webp');background-position:56% center;}
+ .story-copy[data-story-copy="1"]:before{background-image:url('images/kyrgyz-river.webp');background-position:43% center;}
+ .story-copy[data-story-copy="2"]:before{background-image:url('images/nepal-mother.webp');background-position:52% 34%;}
+ .story-copy.story-visible:before{transform:scale(1.01);}
+ .story-copy>span,.story-copy h2,.story-copy p{max-width:490px;display:block;}
+ .story-copy h2{font-size:clamp(39px,10vw,65px);line-height:1.07;letter-spacing:-.065em;margin:21px 0 20px;overflow-wrap:normal;}
+ .story-copy p{font-size:clamp(14px,3.5vw,17px);line-height:1.75;color:#f3f3ed;}
+ .story-copy>span{font-size:11px;line-height:1.4;}
+ .globe-block{height:clamp(350px,92vw,520px)!important;margin-top:15px;}
+ .globe-credit{bottom:7%;font-size:7px;letter-spacing:.05em;}
+ .globe-caption{bottom:7%;font-size:8px;}
+ .route-card,.route-card-kg,.route-card-np,.route-card-bali{height:550px!important;min-height:550px;}
+ .route-bottom{inset:auto 20px 20px;gap:10px;}
+ .route-bottom h3{font-size:clamp(41px,11vw,58px);}
+ .route-bottom>div>span:not(.route-facts span){line-height:1.5;}
+ .route-facts{max-width:none;margin-top:16px;}
+ .route-fact{padding-top:9px;padding-bottom:9px;}
+ .route-bottom .route-fact span{font-size:9px;}
+ .route-bottom .route-fact strong{font-size:12px;}
+ .route-arrow{width:47px!important;height:47px!important;align-self:flex-end;}
+ .testimony{height:auto!important;min-height:650px;display:flex;align-items:center;overflow:hidden;}
+ .testimony-content{position:relative;z-index:2;width:calc(100% - 48px)!important;margin:0 auto!important;padding:105px 0 90px!important;min-width:0;overflow-wrap:break-word;}
+ .testimony blockquote{font-size:clamp(34px,8.5vw,49px)!important;line-height:1.2!important;letter-spacing:-.06em!important;margin:32px 0 25px!important;max-width:100%!important;}
+ .testimony-content>span{font-size:9px;line-height:1.4;}
+ .testimony-content p{line-height:1.8;}
+ .testimony-content a{max-width:100%;}
+ .closing{height:auto!important;min-height:720px;padding:100px 0 85px;}
+ .closing-content{width:calc(100% - 46px)!important;}
+ .closing-actions{align-items:stretch!important;gap:17px!important;max-width:360px;}
+ .closing-actions a{max-width:100%;justify-content:center;min-height:51px;text-align:center;}
+ .outro-contacts{gap:20px;}
+ .footer-main{gap:20px;}
+ .footer-contacts{margin-top:25px;}
+}
+@media(max-width:360px){.route-bottom .route-fact strong{font-size:11px;}.route-card,.route-card-kg,.route-card-np,.route-card-bali{height:590px!important;}}
+@media(prefers-reduced-motion:reduce){.story-copy:before{transition:none!important;transform:scale(1)!important;}.globe-marker-label{transition:none;}}
