@@ -8,3 +8,14 @@
 #viewport{height:clamp(380px,calc(100svh - 390px),700px)}#arrival{pointer-events:none}canvas{touch-action:pan-y}
 @media(max-width:600px){#viewport{height:390px}.scene-top{padding-block:0}#arrival{min-width:130px;max-width:calc(100% - 24px)}#arrival strong{font-size:15px}}
 @media(prefers-reduced-motion:reduce){#arrival{transition:none}#route-progress span{transition:none}}
+
+/* Thin circular instruments, matching the terrain palette. */
+.micro-controls{gap:8px}.scene-top .micro-controls button,.orbit button{position:relative;isolation:isolate;width:44px;height:44px;border:0;border-radius:50%;background:transparent;font-size:18px;color:#dbe8ed;flex-shrink:0}
+.hud-button::before,.hud-button::after{content:"";position:absolute;inset:6px;border-radius:50%;pointer-events:none}
+.hud-button::before{border:1px solid #bcd3de38}.hud-button::after{background:conic-gradient(from -90deg,#dceaf0 0deg var(--sweep,265deg),transparent var(--sweep,265deg) 360deg);mask:radial-gradient(farthest-side,transparent calc(100% - 1.5px),#000 calc(100% - 1.2px));opacity:.8}
+.hud-button:hover{background:#bcd3de0c}.hud-button:hover::after{opacity:1}.hud-button:active{background:#bcd3de1a}.hud-button:focus-visible{outline-offset:0}
+.orbit{gap:4px}.scene-bottom{padding-block:4px}.orbit span{margin-left:9px}.scene-top{padding-block:4px}
+.altimeter{position:absolute;top:22px;left:24px;z-index:3;display:flex;align-items:center;gap:12px;pointer-events:none;color:#dce9ef;text-shadow:0 1px 9px #031019}
+.altimeter-readout{display:flex;flex-direction:column;line-height:1.25;min-width:83px}.metric-label{font-size:8px;letter-spacing:.17em;color:#a5bdca;margin-bottom:5px}#altitude-value{font-size:25px;font-weight:300;letter-spacing:-.035em;font-variant-numeric:tabular-nums;white-space:nowrap}
+#altitude-meter{width:46px;height:46px}#altitude-meter svg{width:100%;height:100%;overflow:visible}#altitude-meter circle{fill:none;stroke-width:1.5}.meter-track{stroke:#bcd3de38}#altitude-arc{stroke:#e0eef3;stroke-dasharray:47.667 100;transform:rotate(-90deg);transform-origin:24px 24px;stroke-linecap:round}#altitude-meter text{fill:#dce9ef;text-anchor:middle;font:13px 'Segoe UI',sans-serif}
+@media(max-width:600px){.altimeter{top:17px;left:16px;gap:8px}.altimeter-readout{min-width:76px}#altitude-value{font-size:23px}#altitude-meter{width:40px;height:40px}.micro-controls{gap:3px}.scene-top{padding-block:2px}.orbit span{display:none}}
